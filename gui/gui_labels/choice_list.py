@@ -1,0 +1,57 @@
+import pygame
+from utils.color import Color
+from utils.point import Point
+from utils.font import Font
+from gui.gui_labels.label import LabelGUI
+
+
+class ChoiceList(LabelGUI):
+    # SCREEN_WIDTH = 750
+    # SCREEN_HEIGHT = 750
+    # WIDTH = 200
+    # HEIGHT = 400
+    LIST_SIZE = 300
+    list_of_organisms = ["Grass", "Wolf", "Guarani", "Grass", "Wolf", "Sheep",
+                         "Grass", "Wolf", "Sheep", "Grass", "Wolf", "Sheep"]
+
+    def __init__(self, window: pygame.Surface, world, top_left: Point, board_position: tuple):
+        super().__init__(window, world, top_left, board_position)
+
+    def display(self):
+        self.draw_window('Choose organism...')
+        self.draw_organisms_list()
+        self.draw_exit_button((self.top_left.x + self.width - 50, self.top_left.y + self.height - 50))
+
+    def draw_organisms_list(self):
+        text_position = Point(self.top_left.x, self.top_left.y + 50)
+        gap = self.LIST_SIZE / len(self.list_of_organisms)
+        for organism_name in self.list_of_organisms:
+            pygame.draw.line(self.window, color=Color.GREY, start_pos=text_position.get_tuple(),
+                             end_pos=(text_position.x + self.width, text_position.y))
+            text = Font.CHOICE_LIST_FONT.render(organism_name, False, (0, 0, 0))
+            self.window.blit(text, text_position.get_tuple())
+            text_position.update(text_position.x, text_position.y + gap)
+
+    def is_position_on_choice_list(self, position: tuple):
+        if self.top_left.x < position[0] < self.top_left.x + self.width \
+                and self.top_left.y + 50 < position[1] < self.top_left.y + self.height - 50:
+            return True
+        else:
+            return False
+
+    def get_organism_on_position(self, position) -> str:
+        gap = self.LIST_SIZE / len(self.list_of_organisms)
+        choice_number = int((position[1] - self.top_left.y - 50) / gap)
+        return self.list_of_organisms[choice_number]
+
+    def delete_label(self):
+        self.world.choice_list = None
+        del self
+
+    def handle_user_input(self, position: tuple):
+        if self.is_position_on_exit(position):
+            self.delete_label()
+        elif self.is_position_on_choice_list(position):
+            organism = self.get_organism_on_position(position)
+            self.world.create_new_organism(organism, (self.board_position.x, self.board_position.y))
+            self.delete_label()
