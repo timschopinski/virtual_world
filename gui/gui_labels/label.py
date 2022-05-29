@@ -2,6 +2,7 @@ import pygame
 from utils.color import Color
 from utils.point import Point
 from utils.font import Font
+from typing import Iterable
 
 
 class LabelGUI:
@@ -31,7 +32,17 @@ class LabelGUI:
         text = Font.CHOICE_LIST_FONT.render('Exit', False, (0, 0, 0))
         self.window.blit(text, position)
 
+    def draw_list(self, text_position: Point, list_rows: Iterable, gap: float):
+        for row in list_rows:
+            pygame.draw.line(self.window, color=Color.GREY,
+                             start_pos=text_position.get_tuple(),
+                             end_pos=(text_position.x + self.width, text_position.y))
+            text = Font.CHOICE_LIST_FONT.render(row, False, (0, 0, 0))
+            self.window.blit(text, text_position.get_tuple())
+            text_position.update(text_position.x, text_position.y + gap)
+
     def is_position_on_exit(self, position: tuple) -> bool:
+        """ This method return True if the user clicked 'Exit' button"""
         if self.top_left.x + 100 < position[0] < self.top_left.x + self.width \
                 and self.top_left.y + 350 < position[1] < self.top_left.y + self.height:
             return True

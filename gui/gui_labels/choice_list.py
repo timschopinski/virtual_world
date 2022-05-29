@@ -1,7 +1,5 @@
 import pygame
-from utils.color import Color
 from utils.point import Point
-from utils.font import Font
 from gui.gui_labels.label import LabelGUI
 
 
@@ -24,12 +22,7 @@ class ChoiceList(LabelGUI):
     def draw_organisms_list(self):
         text_position = Point(self.top_left.x, self.top_left.y + 50)
         gap = self.LIST_SIZE / len(self.list_of_organisms)
-        for organism_name in self.list_of_organisms:
-            pygame.draw.line(self.window, color=Color.GREY, start_pos=text_position.get_tuple(),
-                             end_pos=(text_position.x + self.width, text_position.y))
-            text = Font.CHOICE_LIST_FONT.render(organism_name, False, (0, 0, 0))
-            self.window.blit(text, text_position.get_tuple())
-            text_position.update(text_position.x, text_position.y + gap)
+        super().draw_list(text_position, self.list_of_organisms, gap)
 
     def is_position_on_choice_list(self, position: tuple):
         if self.top_left.x < position[0] < self.top_left.x + self.width \

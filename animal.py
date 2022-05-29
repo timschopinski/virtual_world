@@ -14,23 +14,23 @@ class Animal(Organism):
         super().action()
         self.world.clear_position(self.position.x, self.position.y)
         self.direction = Direction.get_random_direction()
-        if self.direction == Direction.UP.value:
+        if self.direction == Direction.UP:
             self.move_up()
-        elif self.direction == Direction.DOWN.value:
+        elif self.direction == Direction.DOWN:
             self.move_down()
-        elif self.direction == Direction.RIGHT.value:
+        elif self.direction == Direction.RIGHT:
             self.move_right()
-        elif self.direction == Direction.LEFT.value:
+        elif self.direction == Direction.LEFT:
             self.move_left()
 
     def turn_back(self):
-        if self.direction == Direction.UP.value:
+        if self.direction == Direction.UP:
             self.move_down()
-        elif self.direction == Direction.DOWN.value:
+        elif self.direction == Direction.DOWN:
             self.move_up()
-        elif self.direction == Direction.RIGHT.value:
+        elif self.direction == Direction.RIGHT:
             self.move_left()
-        elif self.direction == Direction.LEFT.value:
+        elif self.direction == Direction.LEFT:
             self.move_right()
 
     def move_down(self):

@@ -1,5 +1,5 @@
 from enum import Enum
-from random import randint
+import random
 
 
 class Direction(Enum):
@@ -8,6 +8,6 @@ class Direction(Enum):
     LEFT = 3
     RIGHT = 4
 
-    @classmethod
-    def get_random_direction(cls):
-        return randint(1, 4)
+    @staticmethod
+    def get_random_direction():
+        return random.choice(list(Direction))

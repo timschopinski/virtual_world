@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="requirements.txt added">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/projekt_po.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projekt_po.iml" afterDir="false" />
+    <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="info label updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals/human.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/human.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/gui_labels/info_label.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui_labels/info_label.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/gui_labels/label.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui_labels/label.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/direction.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/direction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +200,7 @@
       <workItem from="1653845799268" duration="453000" />
       <workItem from="1653846342836" duration="915000" />
       <workItem from="1653847380561" duration="276000" />
-      <workItem from="1653847735901" duration="1358000" />
+      <workItem from="1653847735901" duration="3682000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1653842480867</created>
@@ -209,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653842480867</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="info label updated">
+      <created>1653849551871</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653849551871</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,12 +236,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="requirements.txt added" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt added" />
+    <MESSAGE value="info label updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="info label updated" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/projekt_po$point.coverage" NAME="point Coverage Results" MODIFIED="1653404765860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$main.coverage" NAME="main Coverage Results" MODIFIED="1653504383549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1653848826261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1653853593509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/projekt_po$world.coverage" NAME="world Coverage Results" MODIFIED="1651678095595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/projekt_po$choice_list.coverage" NAME="choice_list Coverage Results" MODIFIED="1653386293615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
   </component>
