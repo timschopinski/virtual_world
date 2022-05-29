@@ -6,10 +6,9 @@ from gui.gui_labels.label import LabelGUI
 
 
 class ChoiceList(LabelGUI):
-    # SCREEN_WIDTH = 750
-    # SCREEN_HEIGHT = 750
-    # WIDTH = 200
-    # HEIGHT = 400
+    """ This Class represents the GUI list of organisms,
+        which is responsible for adding new organisms to the world """
+
     LIST_SIZE = 300
     list_of_organisms = ["Grass", "Wolf", "Guarani", "Grass", "Wolf", "Sheep",
                          "Grass", "Wolf", "Sheep", "Grass", "Wolf", "Sheep"]

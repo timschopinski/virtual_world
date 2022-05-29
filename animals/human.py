@@ -45,4 +45,4 @@ class Human(Animal):
 
     @staticmethod
     def get_description():
-        return """Unlike animals the direction of his movement is determined by the use of keys before the start of the turn keyboard arrows. Human also has a special skill  which can be activated with a P button."""
+        return """Unlike animals the direction of his movement is determined by the use of keyboard arrows before the start of the turn. Human also has a special skill which can be activated with a P button."""
