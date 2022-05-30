@@ -41,22 +41,22 @@ class Skill:
         enemy_position = Point(x - 1, y)
         if x > 0:
             if not self.owner.world.is_field_empty(enemy_position):
-                self.owner.world.remove_organism(enemy_position)
+                self.owner.world.remove_organism_on_field(enemy_position)
                 self.animate_explosion(enemy_position)
         if x < self.owner.world.rows - 1:
             enemy_position.update(x + 1, y)
             if not self.owner.world.is_field_empty(enemy_position):
-                self.owner.world.remove_organism(enemy_position)
+                self.owner.world.remove_organism_on_field(enemy_position)
                 self.animate_explosion(enemy_position)
         if y > 0:
             enemy_position.update(x, y - 1)
             if not self.owner.world.is_field_empty(enemy_position):
-                self.owner.world.remove_organism(enemy_position)
+                self.owner.world.remove_organism_on_field(enemy_position)
                 self.animate_explosion(enemy_position)
         if y < self.owner.world.columns - 1:
             enemy_position.update(x, y + 1)
             if not self.owner.world.is_field_empty(enemy_position):
-                self.owner.world.remove_organism(enemy_position)
+                self.owner.world.remove_organism_on_field(enemy_position)
                 self.animate_explosion(enemy_position)
 
     def update(self):

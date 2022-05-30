@@ -2,6 +2,7 @@ from random import randint
 from operator import attrgetter
 from animals.human import Human
 from animals.wolf import Wolf
+from animals.sheep import Sheep
 from plants.grass import Grass
 from plants.guarani import Guarani
 from organism import Organism
@@ -13,7 +14,7 @@ from utils.type import OrganismType
 
 
 class World:
-    SPECIES = [Grass, Guarani]  # Species available in the world
+    SPECIES = [Grass, Guarani, Sheep, Wolf]  # Species available in the world
     CONCENTRATION = 100  # Organisms concentration
 
     def __init__(self, *args, **kwargs):
@@ -72,9 +73,12 @@ class World:
         """This function clears the board position at given coordinates"""
         self.board[x][y] = None
 
-    def remove_organism(self, position: Point):
-        self.organisms.remove(self.get_organism_on_field(position))
+    def remove_organism_on_field(self, position: Point):
+        dead_organism = self.get_organism_on_field(position)
+        self.organisms.remove(dead_organism)
+        dead_organism.is_alive = False
         self.board[position.x][position.y] = None
+        del dead_organism
 
     def create_random_organism(self, position: Point):
         random_species = self.SPECIES[randint(0, len(self.SPECIES) - 1)]
@@ -97,6 +101,8 @@ class World:
                 new_organism = Human(position, self)
             elif organism_type == OrganismType.WOLF:
                 new_organism = Wolf(position, self)
+            elif organism_type == OrganismType.SHEEP:
+                new_organism = Sheep(position, self)
             elif organism_type == OrganismType.GRASS:
                 new_organism = Grass(position, self)
             elif organism_type == OrganismType.GUARANI:

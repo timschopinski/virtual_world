@@ -11,11 +11,11 @@ class Organism:
         self.world.board[self.position.x][self.position.y] = self
         self.chance_to_reproduce = 50
         self.is_alive = True
+        self.is_human = False
         self.strength = None
         self.initiative = None
         self.AVATAR = None
         self.is_animal = None
-        self.is_human = False
 
     def eat_enemy(self, enemy: 'Organism'):
         self.world.organisms.remove(enemy)
