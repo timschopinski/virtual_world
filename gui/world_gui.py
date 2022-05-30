@@ -12,7 +12,7 @@ from storage.save import Save
 
 class WorldGUI(World, BoardGUI):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         super().__init__()
         self.window = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
         pygame.display.set_caption("World Simulator")
@@ -24,7 +24,7 @@ class WorldGUI(World, BoardGUI):
 
     def draw_world(self):
         self.window.fill(Color.WHITE)
-
+        human = self.get_human()
         for x in range(self.BOARD_ROWS):
             for y in range(self.BOARD_COLUMNS):
                 self.draw_field(x, y)
@@ -35,6 +35,9 @@ class WorldGUI(World, BoardGUI):
                 if self.board[x][y]:
                     self.board[x][y].draw()
         self.info.add_round_text(self.round)
+        if human:
+            if human.skill.is_animating:
+                human.skill.draw_explosion()
 
     def another_round(self):
         super().another_round()
@@ -44,7 +47,7 @@ class WorldGUI(World, BoardGUI):
         top_left = Point(mouse_position)
         x = int(top_left.y / self.field_height)
         y = int(top_left.x / self.field_width)
-        if self.get_organism_on_field((x, y)):
+        if self.get_organism_on_field(Point(x, y)):
             self.info_label = InfoLabel(self.window, self, top_left, (x, y))
         else:
             self.choice_list = ChoiceList(self.window, self, top_left, (x, y))
@@ -88,6 +91,11 @@ class WorldGUI(World, BoardGUI):
                     self.another_round()
                 elif event.key == pygame.K_ESCAPE:
                     self.active = False
+                elif event.key == pygame.K_p:
+                    human = self.get_human()
+                    if human:
+                        if not human.skill.is_active:
+                            human.skill.activate()
                     # production
                 elif event.key == pygame.K_k:
                     print(self.organisms, len(self.organisms))

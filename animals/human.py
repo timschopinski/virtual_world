@@ -1,5 +1,6 @@
 from animal import Animal
 from utils.direction import Direction
+from gui.skill import Skill
 import pygame
 import os
 
@@ -16,9 +17,7 @@ class Human(Animal):
         self.initiative = 4
         self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/", "human_2.png")),
                                              (self.HUMAN_SIZE_WIDTH, self.HUMAN_SIZE_HEIGHT))
-
-    def __str__(self):
-        return 'Human'
+        self.skill = Skill(self)
 
     def draw(self):
         organism_position = (self.position.y * self.world.field_width - self.world.field_height
@@ -29,6 +28,7 @@ class Human(Animal):
         self.direction = direction
 
     def action(self):
+        self.skill.update()
         self.age += 1
         self.world.clear_position(self.position.x, self.position.y)
         if self.direction == Direction.UP.value:
@@ -39,6 +39,8 @@ class Human(Animal):
             self.move_right()
         elif self.direction == Direction.LEFT.value:
             self.move_left()
+        if self.skill.is_active:
+            self.skill.action()
 
     def unset_direction(self):
         self.direction = None
@@ -46,3 +48,6 @@ class Human(Animal):
     @staticmethod
     def get_description():
         return """Unlike animals the direction of his movement is determined by the use of keyboard arrows before the start of the turn. Human also has a special skill which can be activated with a P button."""
+
+    def __str__(self):
+        return 'Human'

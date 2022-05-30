@@ -46,7 +46,7 @@ class Organism:
                 self.die(enemy)
 
     def get_empty_field(self, friend: 'Organism') -> tuple:
-        """ Returns empty field """
+        """ Returns empty neighbor field """
         if friend.position.x > 0:
             if self.world.board[friend.position.x-1][friend.position.y] is None:
                 return friend.position.x-1, friend.position.y
@@ -77,7 +77,7 @@ class Organism:
 
     def draw(self):
         """this method draws the organism on the screen"""
-        organism_position = (self.position.y * self.world.SQUARE_WIDTH - self.world.SQUARE_HEIGHT / 2, self.position.x * self.world.SQUARE_HEIGHT)
+        organism_position = (self.position.y * self.world.field_width - self.world.field_height / 2, self.position.x * self.world.SQUARE_HEIGHT)
         self.world.window.blit(self.AVATAR, organism_position)
 
     @staticmethod

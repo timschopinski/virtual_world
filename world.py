@@ -25,6 +25,11 @@ class World:
         self.columns = BoardGUI.BOARD_COLUMNS
         self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
 
+    def _remove_all_organisms(self):
+        """This function removes all organisms from the board and class"""
+        self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
+        self.organisms.clear()
+
     def _sort_organisms(self):
         self.organisms = sorted(self.organisms, key=attrgetter('age'), reverse=True)
         self.organisms = sorted(self.organisms, key=attrgetter('initiative'), reverse=True)
@@ -35,7 +40,6 @@ class World:
         self.round = round_number
         self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
 
-
     def get_human(self) -> Human | None:
         for organism in self.organisms:
             if organism.is_human:
@@ -43,7 +47,7 @@ class World:
         return None
 
     def initialize(self):
-        self.remove_organisms()
+        self._remove_all_organisms()
         human = Human(
             Point(randint(0, self.rows - 1),
                   randint(0, self.columns - 1)), self)
@@ -68,21 +72,19 @@ class World:
         """This function clears the board position at given coordinates"""
         self.board[x][y] = None
 
-    def remove_organisms(self):
-        """This function removes all organisms from the board and class"""
-        self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
-        self.organisms.clear()
+    def remove_organism(self, position: Point):
+        self.organisms.remove(self.get_organism_on_field(position))
+        self.board[position.x][position.y] = None
 
     def create_random_organism(self, position: Point):
         random_species = self.SPECIES[randint(0, len(self.SPECIES) - 1)]
         random_species(position, self)
         # return new_organism
 
-    def get_organism_on_field(self, position: tuple) -> Organism | None:
-        x, y = position
-        return self.board[x][y]
+    def get_organism_on_field(self, position: Point) -> Organism | None:
+        return self.board[position.x][position.y]
 
-    def is_field_empty(self, position):
+    def is_field_empty(self, position: Point):
         if self.board[position.x][position.y] is None:
             return True
         else:
