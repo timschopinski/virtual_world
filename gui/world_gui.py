@@ -6,19 +6,18 @@ from gui.gui_labels.choice_list import ChoiceList
 from gui.gui_labels.info_label import InfoLabel
 from utils.direction import Direction
 from utils.color import Color
-from menu import Comment
+from comment import Comment
+from storage.save import Save
 
 
 class WorldGUI(World, BoardGUI):
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         super().__init__()
         self.window = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
         pygame.display.set_caption("World Simulator")
         self.info = Comment(self.window)
         self.info.delete_comments()
-        # self.field_width = round(self.SCREEN_WIDTH / self.BOARD_COLUMNS)
-        # self.field_height = round(self.SCREEN_HEIGHT / self.BOARD_ROWS)
         self.choice_list = None
         self.info_label = None
         self.active = None
@@ -113,5 +112,5 @@ class WorldGUI(World, BoardGUI):
             clock.tick(fps)
             self.handle_events()
             redraw_window()
-        self.remove_organisms()
+        Save.update_world_state(self.organisms, self.round, self.rows, self.columns)
 

@@ -1,35 +1,38 @@
 import pygame
 import pygame_menu
-import os
+from comment import Comment
 from utils.font import Font
 from utils.color import Color
-import world
+from world import World
 from gui.board import BoardGUI
+from gui.world_gui import WorldGUI
+from storage.save import Save
+from storage.load import Load
 
 
 class Menu:
-    THEME = pygame_menu.Theme(background_color=(0, 0, 0, 0),
-                              title_background_color=(0, 0, 0),
-                              title_font_shadow=True,
-                              widget_padding=20,
-                              widget_offset=(0, 0),
-                              widget_font=Font.MENU_FONT,
-                              widget_font_color=(255, 255, 255)
-                              )
+    THEME = pygame_menu.Theme(
+        background_color=(0, 0, 0, 0),
+        title_background_color=(0, 0, 0),
+        title_font_shadow=True,
+        widget_padding=20,
+        widget_offset=(0, 0),
+        widget_font=Font.MENU_FONT,
+        widget_font_color=(255, 255, 255)
+    )
 
-    def __init__(self, main_function):
+    def __init__(self):
         pygame.font.init()
         pygame.init()
         pygame.display.set_caption("World Simulator")
         self.surface = pygame.display.set_mode((750, 750))
-        self.main_function = main_function
 
     @staticmethod
-    def save_rows(number_of_rows: tuple, *args):
+    def save_rows(number_of_rows: tuple, *args, **kwargs):
         BoardGUI.BOARD_ROWS = number_of_rows[1]
 
     @staticmethod
-    def save_columns(number_of_columns: tuple, *args):
+    def save_columns(number_of_columns: tuple, *args, **kwargs):
         BoardGUI.BOARD_COLUMNS = number_of_columns[1]
 
     @staticmethod
@@ -42,24 +45,34 @@ class Menu:
 
     @staticmethod
     def save_concentration(concentration):
-        # Size.CONCENTRATION = int(concentration)
-        world.World.CONCENTRATION = concentration
+        World.CONCENTRATION = concentration
 
     def set_difficulty(self, difficulty, x):
         pass
 
     @staticmethod
+    def start_simulation():
+        world = WorldGUI()
+        world.initialize()
+        world.display()
+
+    @staticmethod
     def set_highlight():
         pygame_menu.widgets.HighlightSelection(border_width=100, margin_x=30, margin_y=20)
 
+    def add_menu_buttons(self, menu: pygame_menu.Menu):
+        menu.add.button('Play', self.start_simulation)
+        menu.add.button('Load', self.load_simulation)
+        menu.add.button('Save', self.save_simulation)
+        menu.add.button('Comments', self.display_comments)
+        menu.add.button('Settings', self.display_settings)
+        menu.add.button('Quit', pygame_menu.events.EXIT)
+
     def display_menu(self):
-        self.menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
         self.set_highlight()
-        self.menu.add.button('Play', self.main_function)
-        self.menu.add.button('Settings', self.display_settings)
-        self.menu.add.button('Comments', self.display_comments)
-        self.menu.add.button('Quit', pygame_menu.events.EXIT)
-        self.menu.mainloop(self.surface)
+        self.add_menu_buttons(menu)
+        menu.mainloop(self.surface)
 
     def display_comments(self):
         comment_section = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
@@ -95,41 +108,43 @@ class Menu:
                                        onchange=self.save_concentration)
         self.settings.mainloop(self.surface)
 
+    def save_simulation(self):
 
-class Comment:
-    WIDTH, HEIGHT = 750, 100
-    LEFT, TOP = 0, 0
-    pygame.font.init()
-    MENU_BG = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/", "background-black.png")),
-                                     (WIDTH, HEIGHT))
-    comments = []
+        def save(file_path):
+            save = Save(file_path)
+            if save.world_state:
+                save.save_world_state()
+                save_menu.clear()
+                save_menu.add.label('world has been saved successfully!', font_size=20)
+                save_menu.add.button('BACK', self.display_menu)
+            else:
+                save_menu.clear()
+                save_menu.add.label('Uninitialized world can not be saved!', font_size=20)
+                save_menu.add.button('BACK', self.display_menu)
 
-    def __init__(self, surface, *args, **kwargs):
-        pygame.font.init()
-        pygame.init()
-        self.surface = surface
-        self.surface.blit(self.MENU_BG, (self.LEFT, self.TOP))
+        save_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        self.set_highlight()
+        save_menu.add.text_input(title="Enter filename: ", default="my_simulation.txt", onreturn=save)
+        save_menu.mainloop(self.surface)
 
-    def draw_window(self):
-        # pygame.draw.rect(self.surface, Color.BLACK, (self.LEFT, self.TOP, Size.SCREEN_WIDTH, Size.SCREEN_HEIGHT))
-        pass
+    def load_simulation(self):
 
-    def add_round_text(self, round_number: int):
-        x_cor = self.LEFT + 10
-        y_cor = self.TOP + 10
-        round_text = Font.ROUND_FONT.render(f'Round: {round_number}', False, Color.BLACK)
-        self.surface.blit(round_text, (x_cor, y_cor))
+        def load(file_path):
+            loaded_world = Load(file_path)
+            if file_path == "":
+                load_menu.clear()
+                load_menu.add.label('No file entered', font_size=20)
+                load_menu.add.button('BACK', self.display_menu)
+            elif not loaded_world.is_path_valid():
+                load_menu.clear()
+                load_menu.add.label('This file does not contain a saved world', font_size=20)
+                load_menu.add.button('BACK', self.display_menu)
+            else:
+                load_menu.clear()
+                self.add_menu_buttons(load_menu)
+                loaded_world.initialize()
 
-    def add_comment(self, text):
-        self.comments.append(text)
-
-    def display_comments(self):
-        x_cor = self.LEFT + self.WIDTH / 2
-        y_cor = self.TOP + 20
-        for comment_text in self.comments:
-            comment = Font.COMMENT_FONT.render(comment_text, False, Color.WHITE)
-            self.surface.blit(comment, (x_cor, y_cor))
-            y_cor += 20
-
-    def delete_comments(self):
-        self.comments.clear()
+        load_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        self.set_highlight()
+        load_menu.add.text_input(title="Enter filename: ", default="my_simulation.txt", onreturn=load)
+        load_menu.mainloop(self.surface)

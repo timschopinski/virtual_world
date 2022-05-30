@@ -27,7 +27,7 @@ class InfoLabel(LabelGUI):
         self.draw_info_list()
         self.draw_exit_button((self.top_left.x + self.width - 50, self.top_left.y + self.height - 50))
 
-    def get_displayed_organism(self) -> 'Organism':
+    def get_displayed_organism(self) -> Organism:
         """ This method returns organism which info label is shown"""
         return self.world.board[self.board_position.x][self.board_position.y]
 

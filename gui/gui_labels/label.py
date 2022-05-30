@@ -16,10 +16,14 @@ class LabelGUI:
         self.height = height
         self.board_position = Point(board_position)
         self.top_left = top_left
-        if top_left.x + self.width > self.SCREEN_WIDTH:
+        self.validate_top_left()
+
+    def validate_top_left(self):
+        """ This method validates top_left coordinates and updates them if needed """
+        if self.top_left.x + self.width > self.SCREEN_WIDTH:
             new_top_left_x = self.SCREEN_WIDTH - self.width
             self.top_left.x = new_top_left_x
-        if top_left.y + self.height > self.SCREEN_HEIGHT:
+        if self.top_left.y + self.height > self.SCREEN_HEIGHT:
             new_top_left_y = self.SCREEN_HEIGHT - self.height
             self.top_left.y = new_top_left_y
 

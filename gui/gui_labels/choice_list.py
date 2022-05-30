@@ -1,6 +1,7 @@
 import pygame
 from utils.point import Point
 from gui.gui_labels.label import LabelGUI
+from utils.type import OrganismType
 
 
 class ChoiceList(LabelGUI):
@@ -8,8 +9,11 @@ class ChoiceList(LabelGUI):
         which is responsible for adding new organisms to the world """
 
     LIST_SIZE = 300
-    list_of_organisms = ["Grass", "Wolf", "Guarani", "Grass", "Wolf", "Sheep",
-                         "Grass", "Wolf", "Sheep", "Grass", "Wolf", "Sheep"]
+    list_of_organisms = [
+        OrganismType.GRASS, OrganismType.WOLF, OrganismType.GUARANI,
+        OrganismType.GRASS, OrganismType.WOLF, OrganismType.GUARANI,
+        OrganismType.GRASS, OrganismType.WOLF, OrganismType.GUARANI
+    ]
 
     def __init__(self, window: pygame.Surface, world, top_left: Point, board_position: tuple):
         super().__init__(window, world, top_left, board_position)
@@ -22,7 +26,8 @@ class ChoiceList(LabelGUI):
     def draw_organisms_list(self):
         text_position = Point(self.top_left.x, self.top_left.y + 50)
         gap = self.LIST_SIZE / len(self.list_of_organisms)
-        super().draw_list(text_position, self.list_of_organisms, gap)
+        organism_names = [organism.name for organism in self.list_of_organisms]
+        super().draw_list(text_position, organism_names, gap)
 
     def is_position_on_choice_list(self, position: tuple):
         if self.top_left.x < position[0] < self.top_left.x + self.width \
@@ -31,7 +36,7 @@ class ChoiceList(LabelGUI):
         else:
             return False
 
-    def get_organism_on_position(self, position) -> str:
+    def get_organism_on_position(self, position) -> OrganismType:
         gap = self.LIST_SIZE / len(self.list_of_organisms)
         choice_number = int((position[1] - self.top_left.y - 50) / gap)
         return self.list_of_organisms[choice_number]
@@ -45,5 +50,5 @@ class ChoiceList(LabelGUI):
             self.delete_label()
         elif self.is_position_on_choice_list(position):
             organism = self.get_organism_on_position(position)
-            self.world.create_new_organism(organism, (self.board_position.x, self.board_position.y))
+            self.world.create_new_organism(organism, self.board_position)
             self.delete_label()

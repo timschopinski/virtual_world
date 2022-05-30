@@ -7,6 +7,10 @@ from plants.guarani import Guarani
 from organism import Organism
 from gui.board import BoardGUI
 import copy
+from utils.point import Point
+
+from utils.type import OrganismType
+
 
 class World:
     SPECIES = [Grass, Guarani]  # Species available in the world
@@ -14,6 +18,7 @@ class World:
 
     def __init__(self, *args, **kwargs):
         super().__init__()
+
         self.organisms = []
         self.round = 0
         self.rows = BoardGUI.BOARD_ROWS
@@ -21,8 +26,15 @@ class World:
         self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
 
     def _sort_organisms(self):
-        self.organisms = sorted(self.organisms, key=attrgetter('age'))
+        self.organisms = sorted(self.organisms, key=attrgetter('age'), reverse=True)
         self.organisms = sorted(self.organisms, key=attrgetter('initiative'), reverse=True)
+
+    def load_world(self, rows: int, columns: int, round_number: int):
+        self.rows = rows
+        self.columns = columns
+        self.round = round_number
+        self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
+
 
     def get_human(self) -> Human | None:
         for organism in self.organisms:
@@ -31,14 +43,17 @@ class World:
         return None
 
     def initialize(self):
-        human = Human((randint(0, self.rows - 1), randint(0, self.columns - 1)), self)
+        self.remove_organisms()
+        human = Human(
+            Point(randint(0, self.rows - 1),
+                  randint(0, self.columns - 1)), self)
         for x in range(self.rows):
             for y in range(self.columns):
                 if human.position.x == x and human.position.y == y:
                     pass
                 else:
                     if randint(0, 99) < self.CONCENTRATION:
-                        self.create_random_organism((x, y))
+                        self.create_random_organism(Point(x, y))
 
     def another_round(self):
         self._sort_organisms()
@@ -49,9 +64,6 @@ class World:
                 organism.collision()
         self.round += 1
 
-    def add_to_remove_queue(self, organism):
-        self.dead_organisms.append(organism)
-
     def clear_position(self, x: int, y: int):
         """This function clears the board position at given coordinates"""
         self.board[x][y] = None
@@ -61,7 +73,7 @@ class World:
         self.board = [[None for _ in range(self.columns)] for _ in range(self.rows)]
         self.organisms.clear()
 
-    def create_random_organism(self, position: tuple):
+    def create_random_organism(self, position: Point):
         random_species = self.SPECIES[randint(0, len(self.SPECIES) - 1)]
         random_species(position, self)
         # return new_organism
@@ -71,19 +83,20 @@ class World:
         return self.board[x][y]
 
     def is_field_empty(self, position):
-        x, y = position
-        if self.board[x][y] is None:
+        if self.board[position.x][position.y] is None:
             return True
         else:
             return False
 
-    def create_new_organism(self, name, position):
+    def create_new_organism(self, organism_type: OrganismType, position: Point):
         if self.is_field_empty(position):
-            if name == 'Grass':
-                Grass(position, self)
-            elif name == 'Wolf':
+            if organism_type == OrganismType.HUMAN:
+                Human(position, self)
+            elif organism_type == OrganismType.WOLF:
                 Wolf(position, self)
-            elif name == 'Guarani':
+            elif organism_type == OrganismType.GRASS:
+                Grass(position, self)
+            elif organism_type == OrganismType.GUARANI:
                 Guarani(position, self)
 
 
