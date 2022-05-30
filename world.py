@@ -89,15 +89,17 @@ class World:
             return False
 
     def create_new_organism(self, organism_type: OrganismType, position: Point):
+        new_organism = None
         if self.is_field_empty(position):
             if organism_type == OrganismType.HUMAN:
-                Human(position, self)
+                new_organism = Human(position, self)
             elif organism_type == OrganismType.WOLF:
-                Wolf(position, self)
+                new_organism = Wolf(position, self)
             elif organism_type == OrganismType.GRASS:
-                Grass(position, self)
+                new_organism = Grass(position, self)
             elif organism_type == OrganismType.GUARANI:
-                Guarani(position, self)
+                new_organism = Guarani(position, self)
+        return new_organism
 
 
 if __name__ == "__main__":

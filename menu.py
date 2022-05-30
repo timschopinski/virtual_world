@@ -29,11 +29,11 @@ class Menu:
 
     @staticmethod
     def save_rows(number_of_rows: tuple, *args, **kwargs):
-        BoardGUI.BOARD_ROWS = number_of_rows[1]
+        BoardGUI.BOARD_ROWS = number_of_rows[1] + 2
 
     @staticmethod
     def save_columns(number_of_columns: tuple, *args, **kwargs):
-        BoardGUI.BOARD_COLUMNS = number_of_columns[1]
+        BoardGUI.BOARD_COLUMNS = number_of_columns[1] + 2
 
     @staticmethod
     def save_color_1(color):
@@ -101,9 +101,8 @@ class Menu:
         self.settings.add.color_input('BOARD COLOR 2: ',
                                       color_type=pygame_menu.widgets.COLORINPUT_TYPE_RGB,
                                       default=Color.GREY, font_size=18, onchange=self.save_color_2)
-        self.settings.add.selector('ROWS: ', [(str(i), i) for i in range(20)], onchange=self.save_rows, default=10)
-        self.settings.add.selector('COLUMNS: ', [(str(i), i) for i in range(20)], onchange=self.save_columns,
-                                   default=10)
+        self.settings.add.selector('ROWS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_rows, default=8)
+        self.settings.add.selector('COLUMNS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_columns, default=8)
         self.settings.add.range_slider('CONCENTRATION[%]: ', range_values=(0, 100), default=100, increment=10,
                                        onchange=self.save_concentration)
         self.settings.mainloop(self.surface)
@@ -112,14 +111,18 @@ class Menu:
 
         def save(file_path):
             save = Save(file_path)
-            if save.world_state:
+            if not file_path:
+                save_menu.clear()
+                save_menu.add.label('No file entered', font_size=20)
+                save_menu.add.button('BACK', self.display_menu)
+            elif not save.world_state:
+                save_menu.clear()
+                save_menu.add.label('Uninitialized world can not be saved!', font_size=20)
+                save_menu.add.button('BACK', self.display_menu)
+            else:
                 save.save_world_state()
                 save_menu.clear()
                 save_menu.add.label('world has been saved successfully!', font_size=20)
-                save_menu.add.button('BACK', self.display_menu)
-            else:
-                save_menu.clear()
-                save_menu.add.label('Uninitialized world can not be saved!', font_size=20)
                 save_menu.add.button('BACK', self.display_menu)
 
         save_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)

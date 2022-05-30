@@ -6,3 +6,4 @@ class Color:
     LIGHT_GREY = (150, 150, 150)
     BOARD_COLOR_1 = GREEN
     BOARD_COLOR_2 = GREY
+

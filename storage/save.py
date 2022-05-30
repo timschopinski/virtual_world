@@ -1,5 +1,5 @@
 import os
-
+from utils.color import Color
 
 class Save:
     """ Updates the world state every round and saves it to a file when its called """
@@ -14,6 +14,8 @@ class Save:
         cls.world_state['world'].update({'rows': rows})
         cls.world_state['world'].update({'columns': columns})
         cls.world_state['world'].update({'round': round})
+        cls.world_state['world'].update({'board_color_1': Color.BOARD_COLOR_1})
+        cls.world_state['world'].update({'board_color_2': Color.BOARD_COLOR_2})
 
     @classmethod
     def _update_organism_data(cls, organisms):
