@@ -18,6 +18,7 @@ class Organism:
         self.is_animal = None
 
     def eat_enemy(self, enemy: 'Organism'):
+        """ Removes the enemy """
         self.world.organisms.remove(enemy)
         enemy.is_alive = False
         self.world.board[self.position.x][self.position.y] = self
@@ -26,7 +27,7 @@ class Organism:
         del enemy
 
     def die(self, enemy: 'Organism'):
-        """ Removes organism that has lost the fight """
+        """ Removes self """
         self.is_alive = False
         self.world.organisms.remove(self)
         self.world.info.add_comment(
@@ -69,10 +70,10 @@ class Organism:
                 self.world.info.add_comment(
                     f'A baby {new_organism}[{new_organism.position.x}][{new_organism.position.y}] is born')
 
-    def action(self, *args, **kwargs):
+    def action(self):
         self.age += 1
 
-    def collision(self, *args, **kwargs):
+    def collision(self):
         pass
 
     def draw(self):

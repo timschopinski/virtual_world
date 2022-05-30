@@ -7,7 +7,7 @@ class Plant(Organism):
         self.initiative = 0
         self.is_animal = False
 
-    def collision(self, *args, **kwargs):
+    def collision(self):
         pass
         # self.world.board[self.position.x][self.position.y] = self
         # self.reproduce()
@@ -15,5 +15,5 @@ class Plant(Organism):
     def extra_behavior(self, enemy):
         pass
 
-    def action(self, *args, **kwargs):
+    def action(self):
         super().action()

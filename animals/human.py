@@ -31,6 +31,8 @@ class Human(Animal):
         self.skill.update()
         self.age += 1
         self.world.clear_position(self.position.x, self.position.y)
+        if self.skill.is_active:
+            self.skill.action()
         if self.direction == Direction.UP.value:
             self.move_up()
         elif self.direction == Direction.DOWN.value:
@@ -39,8 +41,10 @@ class Human(Animal):
             self.move_right()
         elif self.direction == Direction.LEFT.value:
             self.move_left()
-        if self.skill.is_active:
-            self.skill.action()
+    #
+    # def collision(self, *args, **kwargs):
+    #     if self.skill.is_active:
+    #         self.world.
 
     def unset_direction(self):
         self.direction = None

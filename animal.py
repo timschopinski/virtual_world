@@ -10,7 +10,7 @@ class Animal(Organism):
         self.direction = Direction
         self.is_animal = True
 
-    def action(self, *args, **kwargs):
+    def action(self):
         super().action()
         self.world.clear_position(self.position.x, self.position.y)
         self.direction = Direction.get_random_direction()
@@ -49,7 +49,7 @@ class Animal(Organism):
         if self.position.x > 0:
             self.position.x -= 1
 
-    def collision(self, *args, **kwargs):
+    def collision(self):
         enemy = self.world.board[self.position.x][self.position.y]
         if enemy is not None:
             if type(self) is type(enemy):
