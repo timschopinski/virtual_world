@@ -27,7 +27,7 @@ class WorldGUI(World, BoardGUI):
         human = self.get_human()
         for x in range(self.BOARD_ROWS):
             for y in range(self.BOARD_COLUMNS):
-                self.draw_field(x, y)
+                self.draw_field(self.window, x, y)
                 if self.choice_list:
                     self.choice_list.display()
                 if self.info_label:

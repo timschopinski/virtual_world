@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="plants spreading">
-      <change afterPath="$PROJECT_DIR$/plants/borsch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animal.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals/human.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/human.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals/sheep.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/sheep.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals/wolf.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/wolf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/assets/grass.png" beforeDir="false" afterPath="$PROJECT_DIR$/gui/assets/plants/grass.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/assets/guarani.png" beforeDir="false" afterPath="$PROJECT_DIR$/gui/assets/plants/guarani.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/assets/human_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/gui/assets/animals/human_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/assets/sheep.png" beforeDir="false" afterPath="$PROJECT_DIR$/gui/assets/animals/sheep.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/assets/wolf.png" beforeDir="false" afterPath="$PROJECT_DIR$/gui/assets/animals/wolf.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organism.py" beforeDir="false" afterPath="$PROJECT_DIR$/organism.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/plant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/grass.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/grass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/guarani.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/guarani.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/type.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/world.py" beforeDir="false" afterPath="$PROJECT_DIR$/world.py" afterDir="false" />
+    <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="new board colors">
+      <change beforePath="$PROJECT_DIR$/gui/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/board.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +245,7 @@
       <workItem from="1653847735901" duration="48158000" />
       <workItem from="1653981066638" duration="5233000" />
       <workItem from="1653987103783" duration="212000" />
-      <workItem from="1653987954236" duration="13991000" />
+      <workItem from="1653987954236" duration="14568000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1653842480867</created>
@@ -351,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654004767393</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="new board colors">
+      <created>1654009430375</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1654009430375</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,12 +368,13 @@
     <MESSAGE value="menu background" />
     <MESSAGE value="load board size bug fixed" />
     <MESSAGE value="plants spreading" />
-    <option name="LAST_COMMIT_MESSAGE" value="plants spreading" />
+    <MESSAGE value="new board colors" />
+    <option name="LAST_COMMIT_MESSAGE" value="new board colors" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/projekt_po$point.coverage" NAME="point Coverage Results" MODIFIED="1653404765860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$main.coverage" NAME="main Coverage Results" MODIFIED="1653504383549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1654009197057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1654009301095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/projekt_po$world.coverage" NAME="world Coverage Results" MODIFIED="1651678095595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/virtual_world$type.coverage" NAME="type Coverage Results" MODIFIED="1653902937628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$choice_list.coverage" NAME="choice_list Coverage Results" MODIFIED="1653386293615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
