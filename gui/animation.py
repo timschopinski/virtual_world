@@ -16,8 +16,6 @@ class Animation:
     def draw(self, window: Surface):
         self.animation_cooldown()
         if self.animation_time_counter == 0:
-            print(self.animation_index)
-            print(len(self.sprites))
             sprite = self.sprites[self.animation_index]
             window.blit(sprite, (self.position.x, self.position.y))
             self.animation_time_counter = 1

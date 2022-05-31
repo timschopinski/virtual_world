@@ -8,15 +8,6 @@ import os
 
 class Skill:
 
-    animations = [
-        pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_1.png")),
-        pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_2.png")),
-        pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_3.png")),
-        pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_4.png")),
-        pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_5.png")),
-        pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_6.png")),
-    ]
-
     def __init__(self, owner: Organism, duration: int = 5, cooldown: int = 5):
         self.owner = owner
         self.duration = duration
@@ -24,6 +15,15 @@ class Skill:
         self.is_active = False
         self.is_animating = False
         self.explosions: List[Animation] = []
+
+        self.animations = [
+            pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_1.png")),
+            pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_2.png")),
+            pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_3.png")),
+            pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_4.png")),
+            pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_5.png")),
+            pygame.image.load(os.path.join("gui/assets/animations/explosion", "explosion_6.png")),
+        ]
 
     def activate(self):
         """ Activates the skill"""
@@ -73,7 +73,7 @@ class Skill:
     def create_animation(self, position: Point):
         y = position.y * self.owner.world.field_width
         x = position.x * self.owner.world.field_height
-        self.explosions.append(Animation(self.animations.copy(), Point(y - 340, x)))
+        self.explosions.append(Animation(self.animations.copy(), Point(y - 34 * self.owner.world.columns, x)))
         self.is_animating = True
 
     def draw_explosion(self):

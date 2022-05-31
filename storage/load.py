@@ -2,6 +2,7 @@ import os
 from utils.color import Color
 from gui.world_gui import WorldGUI
 from utils.type import OrganismType
+from gui.board import BoardGUI
 from utils.point import Point
 from typing import List
 
@@ -34,13 +35,14 @@ class Load:
 
     def initialize(self):
         """ Loads the world state from a file """
-        world = WorldGUI()
         with open(file=self.file_path, mode="r") as f:
             world_data = f.readline().split(' ')
             Color.BOARD_COLOR_1, Color.BOARD_COLOR_2 = self._get_colors_from_world_data(world_data)
             world_data = world_data[:3]
-            rows, columns, round_number = tuple(world_data)
-            world.load_world(int(rows), int(columns), int(round_number))
+            rows, columns, round_number = tuple([int(data) for data in world_data])
+            BoardGUI.BOARD_ROWS, BoardGUI.BOARD_COLUMNS = rows, columns
+            world = WorldGUI()
+            world.load_world(rows, columns, round_number)
             while organism_data := f.readline().split(' '):
                 if len(organism_data) == 1:  # last empty line
                     break

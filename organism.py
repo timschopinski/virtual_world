@@ -1,5 +1,6 @@
 from utils.point import Point
 from random import randint
+from pygame import Surface
 
 
 class Organism:
@@ -14,7 +15,9 @@ class Organism:
         self.is_human = False
         self.strength = None
         self.initiative = None
-        self.AVATAR = None
+        self.AVATAR: Surface = NotImplemented
+        self.AVATAR_WIDTH = None
+        self.AVATAR_HEIGHT = None
         self.is_animal = None
 
     def eat_enemy(self, enemy: 'Organism'):
@@ -78,7 +81,9 @@ class Organism:
 
     def draw(self):
         """this method draws the organism on the screen"""
-        organism_position = (self.position.y * self.world.field_width - self.world.field_height / 2, self.position.x * self.world.SQUARE_HEIGHT)
+        organism_position = ((self.position.y + 1) * self.world.field_width
+                             - self.world.field_width / 2 - self.AVATAR_WIDTH / 2,
+                             (self.position.x + 1) * self.world.field_height - self.AVATAR_HEIGHT)
         self.world.window.blit(self.AVATAR, organism_position)
 
     @staticmethod

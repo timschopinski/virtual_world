@@ -10,19 +10,14 @@ class Human(Animal):
     def __init__(self, position, world):
         super().__init__(position, world)
         print(world.__class__)
-        self.HUMAN_SIZE_WIDTH = self.world.field_width * 2
-        self.HUMAN_SIZE_HEIGHT = self.world.field_height
+        self.AVATAR_WIDTH = self.world.field_width * 1.4
+        self.AVATAR_HEIGHT = self.world.field_height
         self.strength = 5
         self.is_human = True
         self.initiative = 4
         self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/", "human_2.png")),
-                                             (self.HUMAN_SIZE_WIDTH, self.HUMAN_SIZE_HEIGHT))
+                                             (self.AVATAR_WIDTH, self.AVATAR_HEIGHT))
         self.skill = Skill(self)
-
-    def draw(self):
-        organism_position = (self.position.y * self.world.field_width - self.world.field_height
-                             / 2, self.position.x * self.world.field_height + 5)
-        self.world.window.blit(self.AVATAR, organism_position)
 
     def set_direction(self, direction: int):
         self.direction = direction
