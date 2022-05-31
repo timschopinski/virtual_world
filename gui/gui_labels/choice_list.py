@@ -11,8 +11,8 @@ class ChoiceList(LabelGUI):
     LIST_SIZE = 300
     list_of_organisms = [
         OrganismType.GRASS, OrganismType.WOLF, OrganismType.GUARANI,
-        OrganismType.SHEEP, OrganismType.WOLF, OrganismType.GUARANI,
-        OrganismType.GRASS, OrganismType.WOLF, OrganismType.GUARANI
+        OrganismType.SHEEP, OrganismType.WOLF, OrganismType.BORSCH,
+        OrganismType.BORSCH, OrganismType.WOLF, OrganismType.GUARANI
     ]
 
     def __init__(self, window: pygame.Surface, world, top_left: Point, board_position: tuple):

@@ -58,8 +58,7 @@ class Animal(Organism):
                 self.world.board[self.position.x][self.position.y] = self
                 self.reproduce(friend)
             else:
-                if not enemy.is_animal:
-                    enemy.extra_behavior(self)
+                enemy.extra_collision_behavior(self)
                 self.fight(enemy)
         else:
             # field is empty

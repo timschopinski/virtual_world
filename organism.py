@@ -76,9 +76,16 @@ class Organism:
                     f'A baby {new_organism}[{new_organism.position.x}][{new_organism.position.y}] is born')
 
     def action(self):
+        self.extra_action_behavior()
         self.age += 1
 
     def collision(self):
+        pass
+
+    def extra_collision_behavior(self, enemy):
+        pass
+
+    def extra_action_behavior(self):
         pass
 
     def draw(self):

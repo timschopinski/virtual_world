@@ -5,6 +5,7 @@ from animals.wolf import Wolf
 from animals.sheep import Sheep
 from plants.grass import Grass
 from plants.guarani import Guarani
+from plants.borsch import Borsch
 from organism import Organism
 from gui.board import BoardGUI
 import copy
@@ -14,7 +15,7 @@ from utils.type import OrganismType
 
 
 class World:
-    SPECIES = [Grass, Guarani, Sheep, Wolf]  # Species available in the world
+    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch]  # Species available in the world
     CONCENTRATION = 100  # Organisms concentration
 
     def __init__(self, *args, **kwargs):
@@ -106,6 +107,8 @@ class World:
             elif organism_type == OrganismType.GRASS:
                 new_organism = Grass(position, self)
             elif organism_type == OrganismType.GUARANI:
+                new_organism = Guarani(position, self)
+            elif organism_type == OrganismType.BORSCH:
                 new_organism = Guarani(position, self)
         return new_organism
 

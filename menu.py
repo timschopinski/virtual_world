@@ -18,6 +18,7 @@ class Menu:
     MAIN_THEME.background_color = pygame_menu.BaseImage(
         image_path=MENU_BG
     )
+
     def __init__(self):
         pygame.font.init()
         pygame.init()
@@ -77,11 +78,14 @@ class Menu:
         comment_section.add.button('BACK', self.display_menu)
         info = Comment(self.surface)
         if info.comments:
+            label_text = ""
             for comment in info.comments:
                 if 'Round' in comment:
                     comment_section.add.label(comment, font_size=20)
+                    comment_section.add.label(label_text, font_size=10)
+                    label_text = ""
                 else:
-                    comment_section.add.label(comment, font_size=10)
+                    label_text += comment + '\n'
         else:
             comment_section.add.label('No comments available...', font_size=20)
         comment_section.mainloop(self.surface)
@@ -94,10 +98,10 @@ class Menu:
         # self.menu.add.selector('Difficulty :', [('Easy', 1), ('Hard', 2)], onchange=self.set_difficulty)
         self.settings.add.color_input('BOARD COLOR 1: ',
                                       color_type=pygame_menu.widgets.COLORINPUT_TYPE_RGB,
-                                      default=Color.GREEN, font_size=18, onchange=self.save_color_1)
+                                      default=Color.LIGHT_BLUE, font_size=18, onchange=self.save_color_1)
         self.settings.add.color_input('BOARD COLOR 2: ',
                                       color_type=pygame_menu.widgets.COLORINPUT_TYPE_RGB,
-                                      default=Color.GREY, font_size=18, onchange=self.save_color_2)
+                                      default=Color.LIGHT_PURPLE, font_size=18, onchange=self.save_color_2)
         self.settings.add.selector('ROWS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_rows, default=8)
         self.settings.add.selector('COLUMNS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_columns,
                                    default=8)

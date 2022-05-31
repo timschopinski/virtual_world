@@ -11,7 +11,7 @@ class Wolf(Animal):
         self.initiative = 5
         self.AVATAR_WIDTH = self.world.field_width
         self.AVATAR_HEIGHT = self.world.field_height * 0.75
-        self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/", "wolf.png")),
+        self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/animals/", "wolf.png")),
                                              (self.AVATAR_WIDTH, self.AVATAR_HEIGHT))
 
     def __str__(self):

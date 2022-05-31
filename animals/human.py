@@ -15,7 +15,7 @@ class Human(Animal):
         self.strength = 5
         self.is_human = True
         self.initiative = 4
-        self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/", "human_2.png")),
+        self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/animals/", "human_2.png")),
                                              (self.AVATAR_WIDTH, self.AVATAR_HEIGHT))
         self.skill = Skill(self)
 

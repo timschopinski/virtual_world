@@ -3,10 +3,11 @@ import os
 from utils.color import Color
 from utils.font import Font
 
+
 class Comment:
     WIDTH, HEIGHT = 750, 100
     LEFT, TOP = 0, 0
-    # pygame.font.init()
+
     MENU_BG = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/", "background-black.png")),
                                      (WIDTH, HEIGHT))
     comments = []
