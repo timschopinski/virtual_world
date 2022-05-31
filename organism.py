@@ -1,6 +1,8 @@
 from utils.point import Point
 from random import randint
 from pygame import Surface
+from typing import List
+import copy
 
 
 class Organism:
@@ -10,7 +12,7 @@ class Organism:
         self.age = 0
         self.world.organisms.append(self)
         self.world.board[self.position.x][self.position.y] = self
-        self.chance_to_reproduce = 50
+        self.chance_to_reproduce = 50  # %
         self.is_alive = True
         self.is_human = False
         self.strength = None
@@ -49,27 +51,27 @@ class Organism:
             else:
                 self.die(enemy)
 
-    def get_empty_field(self, friend: 'Organism') -> tuple:
+    def get_empty_field(self, position: Point) -> Point | None:
         """ Returns empty neighbor field """
-        if friend.position.x > 0:
-            if self.world.board[friend.position.x-1][friend.position.y] is None:
-                return friend.position.x-1, friend.position.y
-        elif friend.position.x < self.world.rows - 1:
-            if self.world.board[friend.position.x+1][friend.position.y] is None:
-                return friend.position.x+1, friend.position.y
-        elif friend.position.y > 0:
-            if self.world.board[friend.position.x][friend.position.y-1] is None:
-                return friend.position.x, friend.position.y - 1
-        elif friend.position.y < self.world.columns - 1:
-            if self.world.board[friend.position.x][friend.position.y+1] is None:
-                return friend.position.x, friend.position.y + 1
-        return None, None
+        if position.x > 0:
+            if self.world.board[position.x-1][position.y] is None:
+                return Point(position.x-1, position.y)
+        if position.x < self.world.rows - 1:
+            if self.world.board[position.x+1][position.y] is None:
+                return Point(position.x+1, position.y)
+        if position.y > 0:
+            if self.world.board[position.x][position.y-1] is None:
+                return Point(position.x, position.y - 1)
+        if position.y < self.world.columns - 1:
+            if self.world.board[position.x][position.y+1] is None:
+                return Point(position.x, position.y + 1)
+        return None
 
-    def reproduce(self, friend):
-        new_organism_x, new_organism_y = self.get_empty_field(friend)
-        if new_organism_x is not None and new_organism_y is not None:
+    def reproduce(self, friend: 'Organism'):
+        empty_field = self.get_empty_field(friend.position)
+        if empty_field is not None:
             if randint(1, 100) < self.chance_to_reproduce:
-                new_organism = self.__class__(Point(new_organism_x, new_organism_y), self.world)
+                new_organism = self.__class__(empty_field, self.world)
                 self.world.info.add_comment(
                     f'A baby {new_organism}[{new_organism.position.x}][{new_organism.position.y}] is born')
 
@@ -85,6 +87,25 @@ class Organism:
                              - self.world.field_width / 2 - self.AVATAR_WIDTH / 2,
                              (self.position.x + 1) * self.world.field_height - self.AVATAR_HEIGHT)
         self.world.window.blit(self.AVATAR, organism_position)
+
+    def get_all_neighbours(self) -> List:
+        """ Returns a list of all neighbour organisms """
+        neighbour_organisms = []
+        neighbour_field = copy.copy(self.position)
+
+        if self.position.x > 0:
+            neighbour_field.update(self.position.x - 1, self.position.y)
+            neighbour_organisms.append(self.world.get_organism_on_field(neighbour_field))
+        if self.position.x < self.world.rows - 1:
+            neighbour_field.update(self.position.x + 1, self.position.y)
+            neighbour_organisms.append(self.world.get_organism_on_field(neighbour_field))
+        if self.position.y > 0:
+            neighbour_field.update(self.position.x, self.position.y - 1)
+            neighbour_organisms.append(self.world.get_organism_on_field(neighbour_field))
+        if self.position.y < self.world.columns - 1:
+            neighbour_field.update(self.position.x, self.position.y + 1)
+            neighbour_organisms.append(self.world.get_organism_on_field(neighbour_field))
+        return neighbour_organisms
 
     @staticmethod
     def get_description():
