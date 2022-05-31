@@ -45,11 +45,6 @@ class Human(Animal):
         if self.skill.is_active:
             self.skill.action()
 
-    #
-    # def collision(self, *args, **kwargs):
-    #     if self.skill.is_active:
-    #         self.world.
-
     def unset_direction(self):
         self.direction = None
 

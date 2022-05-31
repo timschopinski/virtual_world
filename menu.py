@@ -8,19 +8,16 @@ from gui.board import BoardGUI
 from gui.world_gui import WorldGUI
 from storage.save import Save
 from storage.load import Load
+import os
 
 
 class Menu:
-    THEME = pygame_menu.Theme(
-        background_color=(0, 0, 0, 0),
-        title_background_color=(0, 0, 0),
-        title_font_shadow=True,
-        widget_padding=20,
-        widget_offset=(0, 0),
-        widget_font=Font.MENU_FONT,
-        widget_font_color=(255, 255, 255)
-    )
 
+    MENU_BG = os.path.join("gui/assets/", "background-black.png")
+    MAIN_THEME = pygame_menu.themes.THEME_DARK.copy()
+    MAIN_THEME.background_color = pygame_menu.BaseImage(
+        image_path=MENU_BG
+    )
     def __init__(self):
         pygame.font.init()
         pygame.init()
@@ -69,13 +66,13 @@ class Menu:
         menu.add.button('Quit', pygame_menu.events.EXIT)
 
     def display_menu(self):
-        menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.MAIN_THEME)
         self.set_highlight()
         self.add_menu_buttons(menu)
         menu.mainloop(self.surface)
 
     def display_comments(self):
-        comment_section = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        comment_section = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.MAIN_THEME)
         self.set_highlight()
         comment_section.add.button('BACK', self.display_menu)
         info = Comment(self.surface)
@@ -90,7 +87,7 @@ class Menu:
         comment_section.mainloop(self.surface)
 
     def display_settings(self):
-        self.settings = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        self.settings = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.MAIN_THEME)
         self.set_highlight()
 
         self.settings.add.button('BACK', self.display_menu)
@@ -102,7 +99,8 @@ class Menu:
                                       color_type=pygame_menu.widgets.COLORINPUT_TYPE_RGB,
                                       default=Color.GREY, font_size=18, onchange=self.save_color_2)
         self.settings.add.selector('ROWS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_rows, default=8)
-        self.settings.add.selector('COLUMNS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_columns, default=8)
+        self.settings.add.selector('COLUMNS: ', [(str(i), i) for i in range(2, 20)], onchange=self.save_columns,
+                                   default=8)
         self.settings.add.range_slider('CONCENTRATION[%]: ', range_values=(0, 100), default=100, increment=10,
                                        onchange=self.save_concentration)
         self.settings.mainloop(self.surface)
@@ -125,7 +123,7 @@ class Menu:
                 save_menu.add.label('world has been saved successfully!', font_size=20)
                 save_menu.add.button('BACK', self.display_menu)
 
-        save_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        save_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.MAIN_THEME)
         self.set_highlight()
         save_menu.add.text_input(title="Enter filename: ", default="my_simulation.txt", onreturn=save)
         save_menu.mainloop(self.surface)
@@ -147,7 +145,7 @@ class Menu:
                 self.add_menu_buttons(load_menu)
                 loaded_world.initialize()
 
-        load_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.THEME)
+        load_menu = pygame_menu.Menu('', BoardGUI.SCREEN_WIDTH, BoardGUI.SCREEN_HEIGHT, theme=self.MAIN_THEME)
         self.set_highlight()
         load_menu.add.text_input(title="Enter filename: ", default="my_simulation.txt", onreturn=load)
         load_menu.mainloop(self.surface)
