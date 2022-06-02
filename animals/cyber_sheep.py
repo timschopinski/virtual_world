@@ -26,16 +26,19 @@ class CyberSheep(Sheep):
         return min(self.get_all_borsch(), key=lambda borsch: self.position.get_distance_between_points(borsch.position), default=None)
 
     def action(self):
-
+        self.age += 1
         if not self.get_all_borsch():
-            super().action()
+            print('super called')
+            self.direction = Direction.get_random_direction()
         else:
-            self.age += 1
+            print('extra behavior called')
             self.extra_action_behavior()
-            self.world.clear_position(self.position.x, self.position.y)
-            self.move()
+
+        self.world.clear_position(self.position.x, self.position.y)
+        self.move()
 
     def extra_action_behavior(self):
+
         nearest_borsch = self.get_nearest_borsch()
         if self.position.x > nearest_borsch.position.x:
             self.direction = Direction.UP
@@ -45,7 +48,6 @@ class CyberSheep(Sheep):
             self.direction = Direction.LEFT
         elif self.position.y < nearest_borsch.position.y:
             self.direction = Direction.RIGHT
-
 
     @staticmethod
     def get_description():
