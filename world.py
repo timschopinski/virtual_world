@@ -3,6 +3,7 @@ from operator import attrgetter
 from animals.human import Human
 from animals.wolf import Wolf
 from animals.sheep import Sheep
+from animals.cyber_sheep import CyberSheep
 from plants.grass import Grass
 from plants.guarani import Guarani
 from plants.borsch import Borsch
@@ -15,7 +16,7 @@ from utils.type import OrganismType
 
 
 class World:
-    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch]  # Species available in the world
+    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch, CyberSheep]  # Species available in the world
     CONCENTRATION = 100  # Organisms concentration
 
     def __init__(self, *args, **kwargs):
@@ -104,12 +105,14 @@ class World:
                 new_organism = Wolf(position, self)
             elif organism_type == OrganismType.SHEEP:
                 new_organism = Sheep(position, self)
+            elif organism_type == OrganismType.CYBER_SHEEP:
+                new_organism = CyberSheep(position, self)
             elif organism_type == OrganismType.GRASS:
                 new_organism = Grass(position, self)
             elif organism_type == OrganismType.GUARANI:
                 new_organism = Guarani(position, self)
             elif organism_type == OrganismType.BORSCH:
-                new_organism = Guarani(position, self)
+                new_organism = Borsch(position, self)
         return new_organism
 
 

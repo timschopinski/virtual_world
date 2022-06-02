@@ -12,7 +12,6 @@ class Organism:
         self.age = 0
         self.world.organisms.append(self)
         self.world.board[self.position.x][self.position.y] = self
-        self.chance_to_reproduce = 50  # %
         self.is_alive = True
         self.is_human = False
         self.strength = None
@@ -79,6 +78,7 @@ class Organism:
         self.extra_action_behavior()
         self.age += 1
 
+
     def collision(self):
         pass
 
@@ -94,6 +94,12 @@ class Organism:
                              - self.world.field_width / 2 - self.AVATAR_WIDTH / 2,
                              (self.position.x + 1) * self.world.field_height - self.AVATAR_HEIGHT)
         self.world.window.blit(self.AVATAR, organism_position)
+
+    def remove_organism(self, removed_organism: 'Organism'):
+        self.world.organisms.remove(removed_organism)
+        removed_organism.is_alive = False
+        self.world.board[removed_organism.position.x][removed_organism.position.y] = None
+        del removed_organism
 
     def get_all_neighbours(self) -> List:
         """ Returns a list of all neighbour organisms """

@@ -11,9 +11,7 @@ class Plant(Organism):
         self.chance_to_spread = 50  # %
 
     def collision(self):
-        pass
-        # self.world.board[self.position.x][self.position.y] = self
-        # self.reproduce()
+        super().collision()
 
     def try_to_spread(self):
         if randint(1, 100) < self.chance_to_spread:

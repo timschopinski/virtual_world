@@ -9,11 +9,16 @@ class Animal(Organism):
         self.height_limit = world.rows - 1
         self.direction = Direction
         self.is_animal = True
+        self.chance_to_reproduce = 50  # %
 
     def action(self):
         super().action()
         self.world.clear_position(self.position.x, self.position.y)
         self.direction = Direction.get_random_direction()
+        self.move()
+
+    def move(self):
+        """ Changes the position in depending on the direction """
         if self.direction == Direction.UP:
             self.move_up()
         elif self.direction == Direction.DOWN:
@@ -24,6 +29,7 @@ class Animal(Organism):
             self.move_left()
 
     def turn_back(self):
+        """ Moves one field back"""
         if self.direction == Direction.UP:
             self.move_down()
         elif self.direction == Direction.DOWN:
@@ -59,7 +65,8 @@ class Animal(Organism):
                 self.reproduce(friend)
             else:
                 enemy.extra_collision_behavior(self)
-                self.fight(enemy)
+                if self.is_alive:
+                    self.fight(enemy)
         else:
             # field is empty
             self.world.board[self.position.x][self.position.y] = self
