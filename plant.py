@@ -13,6 +13,9 @@ class Plant(Organism):
     def collision(self):
         super().collision()
 
+    def extra_collision_behavior(self, enemy):
+        self.die(enemy)
+
     def try_to_spread(self):
         if randint(1, 100) < self.chance_to_spread:
             if any(type(neighbour) == type(self) for neighbour in self.get_all_neighbours()):

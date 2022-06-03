@@ -19,7 +19,8 @@ class Organism:
         self.AVATAR: Surface = NotImplemented
         self.AVATAR_WIDTH = None
         self.AVATAR_HEIGHT = None
-        self.is_animal = None
+        self.is_animal = False
+        self.has_special_collision = False
 
     def eat_enemy(self, enemy: 'Organism'):
         """ Removes the enemy """
@@ -34,6 +35,7 @@ class Organism:
         """ Removes self """
         self.is_alive = False
         self.world.organisms.remove(self)
+        self.world.board[self.position.x][self.position.y] = enemy
         self.world.info.add_comment(
             f'{enemy}[{enemy.position.x}][{enemy.position.y}] ate a {self}[{self.position.x}][{self.position.y}]')
         del self
@@ -78,7 +80,6 @@ class Organism:
         self.extra_action_behavior()
         self.age += 1
 
-
     def collision(self):
         pass
 
@@ -96,6 +97,8 @@ class Organism:
         self.world.window.blit(self.AVATAR, organism_position)
 
     def remove_organism(self, removed_organism: 'Organism'):
+        if not removed_organism.is_alive:
+            return
         self.world.organisms.remove(removed_organism)
         removed_organism.is_alive = False
         self.world.board[removed_organism.position.x][removed_organism.position.y] = None

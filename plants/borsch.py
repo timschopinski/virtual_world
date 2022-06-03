@@ -10,6 +10,7 @@ class Borsch(Plant):
         super().__init__(position, world)
         self.strength = 0
         self.boost = 3
+        self.has_special_collision = True
         self.chance_to_spread = 5  # %
         self.AVATAR_WIDTH = self.world.field_width * 0.7
         self.AVATAR_HEIGHT = self.world.field_height * 0.5
@@ -22,11 +23,14 @@ class Borsch(Plant):
          if neighbour and type(self) is not type(neighbour) and not isinstance(neighbour, CyberSheep)]
 
     def extra_collision_behavior(self, enemy):
-        """ Removes the nemy after collision. This method is called when collision happens """
+        """ Removes the enemy after collision. This method is called when collision happens """
+        if not self.is_alive or not enemy.is_alive:
+            return
         if not isinstance(enemy, CyberSheep):
             self.remove_organism(enemy)
             self.world.info.add_comment(
                 f'{enemy}[{enemy.position.x}][{enemy.position.y}] dies after eating {self}[{self.position.x}][{self.position.y}]')
+        super().extra_collision_behavior(enemy)
 
     @staticmethod
     def get_description():

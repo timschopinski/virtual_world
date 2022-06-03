@@ -55,6 +55,9 @@ class Animal(Organism):
         if self.position.x > 0:
             self.position.x -= 1
 
+    def extra_collision_behavior(self, enemy):
+        pass
+
     def collision(self):
         enemy = self.world.board[self.position.x][self.position.y]
         if enemy is not None:
@@ -63,9 +66,11 @@ class Animal(Organism):
                 self.turn_back()
                 self.world.board[self.position.x][self.position.y] = self
                 self.reproduce(friend)
-            else:
+            elif self.has_special_collision or enemy.has_special_collision:
+                self.extra_collision_behavior(enemy)
                 enemy.extra_collision_behavior(self)
-                if self.is_alive:
+            else:
+                if self.is_alive and enemy.is_alive:
                     self.fight(enemy)
         else:
             # field is empty

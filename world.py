@@ -4,6 +4,7 @@ from animals.human import Human
 from animals.wolf import Wolf
 from animals.sheep import Sheep
 from animals.cyber_sheep import CyberSheep
+from animals.turtle import Turtle
 from plants.grass import Grass
 from plants.guarani import Guarani
 from plants.borsch import Borsch
@@ -107,6 +108,8 @@ class World:
                 new_organism = Sheep(position, self)
             elif organism_type == OrganismType.CYBER_SHEEP:
                 new_organism = CyberSheep(position, self)
+            elif organism_type == OrganismType.TURTLE:
+                new_organism = Turtle(position, self)
             elif organism_type == OrganismType.GRASS:
                 new_organism = Grass(position, self)
             elif organism_type == OrganismType.GUARANI:
