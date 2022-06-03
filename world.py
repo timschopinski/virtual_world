@@ -8,11 +8,11 @@ from animals.turtle import Turtle
 from plants.grass import Grass
 from plants.guarani import Guarani
 from plants.borsch import Borsch
+from plants.dandelion import Dandelion
 from organism import Organism
 from gui.board import BoardGUI
 import copy
 from utils.point import Point
-
 from utils.type import OrganismType
 
 
@@ -116,6 +116,8 @@ class World:
                 new_organism = Guarani(position, self)
             elif organism_type == OrganismType.BORSCH:
                 new_organism = Borsch(position, self)
+            elif organism_type == OrganismType.DANDELION:
+                new_organism = Dandelion(position, self)
         return new_organism
 
 

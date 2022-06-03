@@ -7,6 +7,7 @@ class Plant(Organism):
     def __init__(self, position, world):
         super().__init__(position, world)
         self.initiative = 0
+        self.strength = 0
         self.is_animal = False
         self.chance_to_spread = 50  # %
 

@@ -54,4 +54,4 @@ class CyberSheep(Sheep):
         return """ Its primary goal is to eat Borsch. Always drives towards the nearest borscht and tries to eat it. If there is no borscht it pretends to be ordinary sheep"""
 
     def __str__(self):
-        return 'Cyber Sheep'
+        return 'Cyber_Sheep'

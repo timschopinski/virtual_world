@@ -4,11 +4,10 @@ import pygame
 import os
 
 
-class Guarani(Plant):
+class WildBerries(Plant):
 
     def __init__(self, position, world):
         super().__init__(position, world)
-        self.boost = 3
         self.has_special_collision = True
         self.AVATAR_WIDTH = self.world.field_width * 0.7
         self.AVATAR_HEIGHT = self.world.field_height * 0.5
@@ -16,11 +15,11 @@ class Guarani(Plant):
                                              (self.AVATAR_WIDTH, self.AVATAR_HEIGHT))
 
     def extra_collision_behavior(self, enemy: 'Animal'):
-        """Adds extra 3 points of strength"""
-        enemy.strength += self.boost
-        if not self.is_alive or not enemy.is_alive:
-            return
-        super().extra_collision_behavior(enemy)
+        """"""
+        if self.is_alive:
+            self.die(enemy)
+        if enemy.is_alive:
+            self.remove_organism(enemy)
 
     def __str__(self):
-        return 'Guarani'
+        return 'Wild Berries'

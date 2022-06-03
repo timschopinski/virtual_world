@@ -11,6 +11,8 @@ class OrganismType(Enum):
     GRASS = auto()
     GUARANI = auto()
     BORSCH = auto()
+    DANDELION = auto()
+    WILD_BERRIES = auto()
 
     @classmethod
     def get_organism_type(cls, organism_type: str) -> 'OrganismType':
@@ -31,7 +33,10 @@ class OrganismType(Enum):
             return cls.GUARANI
         elif organism_type == 'BORSCH':
             return cls.BORSCH
-
+        elif organism_type == 'DANDELION':
+            return cls.DANDELION
+        elif organism_type == 'WILD_BERRIES':
+            return cls.WILD_BERRIES
 
 
 
