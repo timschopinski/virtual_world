@@ -1,3 +1,5 @@
+import random
+
 from utils.point import Point
 from random import randint
 from pygame import Surface
@@ -54,18 +56,21 @@ class Organism:
 
     def get_empty_field(self, position: Point) -> Point | None:
         """ Returns empty neighbor field """
+        possible_positions: List[Point] = []
         if position.x > 0:
             if self.world.board[position.x-1][position.y] is None:
-                return Point(position.x-1, position.y)
+                possible_positions.append(Point(position.x-1, position.y))
         if position.x < self.world.rows - 1:
             if self.world.board[position.x+1][position.y] is None:
-                return Point(position.x+1, position.y)
+                possible_positions.append(Point(position.x+1, position.y))
         if position.y > 0:
             if self.world.board[position.x][position.y-1] is None:
-                return Point(position.x, position.y - 1)
+                possible_positions.append(Point(position.x, position.y - 1))
         if position.y < self.world.columns - 1:
             if self.world.board[position.x][position.y+1] is None:
-                return Point(position.x, position.y + 1)
+                possible_positions.append(Point(position.x, position.y + 1))
+        if possible_positions:
+            return random.choice(possible_positions)
         return None
 
     def reproduce(self, friend: 'Organism'):

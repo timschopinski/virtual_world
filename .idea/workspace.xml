@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="general collision bugs fixed">
-      <change afterPath="$PROJECT_DIR$/plants/dandelion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plants/wild_berries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/animals/fox.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/assets/plants/borsch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/assets/plants/wild_berries.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals/cyber_sheep.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/cyber_sheep.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/plant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/borsch.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/borsch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/grass.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/grass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/guarani.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/guarani.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organism.py" beforeDir="false" afterPath="$PROJECT_DIR$/organism.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plants/wild_berries.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/wild_berries.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/type.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/type.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/world.py" beforeDir="false" afterPath="$PROJECT_DIR$/world.py" afterDir="false" />
     </list>
@@ -259,7 +258,8 @@
       <workItem from="1654168575673" duration="3205000" />
       <workItem from="1654238287033" duration="2294000" />
       <workItem from="1654261318588" duration="1303000" />
-      <workItem from="1654263304321" duration="4563000" />
+      <workItem from="1654263304321" duration="4866000" />
+      <workItem from="1654441566771" duration="2508000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1653842480867</created>
@@ -380,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654266727771</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="general collision bugs fixed">
+      <created>1654278652638</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1654278652638</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +427,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/projekt_po$point.coverage" NAME="point Coverage Results" MODIFIED="1653404765860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$main.coverage" NAME="main Coverage Results" MODIFIED="1653504383549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1654268247701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1654444370294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/projekt_po$world.coverage" NAME="world Coverage Results" MODIFIED="1651678095595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/virtual_world$type.coverage" NAME="type Coverage Results" MODIFIED="1653902937628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$choice_list.coverage" NAME="choice_list Coverage Results" MODIFIED="1653386293615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />

@@ -8,6 +8,7 @@ class OrganismType(Enum):
     SHEEP = auto()
     CYBER_SHEEP = auto()
     TURTLE = auto()
+    FOX = auto()
     GRASS = auto()
     GUARANI = auto()
     BORSCH = auto()
@@ -27,6 +28,8 @@ class OrganismType(Enum):
             return cls.CYBER_SHEEP
         elif organism_type == 'TURTLE':
             return cls.TURTLE
+        elif organism_type == 'FOX':
+            return cls.FOX
         elif organism_type == 'GRASS':
             return cls.GRASS
         elif organism_type == 'GUARANI':

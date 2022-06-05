@@ -4,11 +4,14 @@ from animals.human import Human
 from animals.wolf import Wolf
 from animals.sheep import Sheep
 from animals.cyber_sheep import CyberSheep
+from animals.fox import Fox
 from animals.turtle import Turtle
+from animals.fox import Fox
 from plants.grass import Grass
 from plants.guarani import Guarani
 from plants.borsch import Borsch
 from plants.dandelion import Dandelion
+from plants.wild_berries import WildBerries
 from organism import Organism
 from gui.board import BoardGUI
 import copy
@@ -17,7 +20,7 @@ from utils.type import OrganismType
 
 
 class World:
-    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch, CyberSheep]  # Species available in the world
+    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch, CyberSheep, WildBerries, Fox]  # Species available in the world
     CONCENTRATION = 100  # Organisms concentration
 
     def __init__(self, *args, **kwargs):
@@ -108,6 +111,8 @@ class World:
                 new_organism = Sheep(position, self)
             elif organism_type == OrganismType.CYBER_SHEEP:
                 new_organism = CyberSheep(position, self)
+            elif organism_type == OrganismType.FOX:
+                new_organism = Fox(position, self)
             elif organism_type == OrganismType.TURTLE:
                 new_organism = Turtle(position, self)
             elif organism_type == OrganismType.GRASS:
@@ -118,6 +123,8 @@ class World:
                 new_organism = Borsch(position, self)
             elif organism_type == OrganismType.DANDELION:
                 new_organism = Dandelion(position, self)
+            elif organism_type == OrganismType.WILD_BERRIES:
+                new_organism = WildBerries(position, self)
         return new_organism
 
 

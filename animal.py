@@ -1,6 +1,6 @@
 from organism import Organism
 from utils.direction import Direction
-
+from utils.point import Point
 
 class Animal(Organism):
     def __init__(self, position, world):
@@ -16,6 +16,22 @@ class Animal(Organism):
         self.world.clear_position(self.position.x, self.position.y)
         self.direction = Direction.get_random_direction()
         self.move()
+
+    def set_direction_to_position(self, target: Point):
+        """Sets the direction to reach the given target"""
+        if target is None:
+            self.direction = None
+            return
+        if target.x < self.position.x:
+            self.direction = Direction.UP
+        elif target.x > self.position.x:
+            self.direction = Direction.DOWN
+        elif target.y > self.position.y:
+            self.direction = Direction.RIGHT
+        elif target.y < self.position.y:
+            self.direction = Direction.LEFT
+        else:
+            self.direction = None
 
     def move(self):
         """ Changes the position in depending on the direction """
