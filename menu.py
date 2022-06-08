@@ -1,7 +1,6 @@
 import pygame
 import pygame_menu
 from comment import Comment
-from utils.font import Font
 from utils.color import Color
 from world import World
 from gui.board import BoardGUI
