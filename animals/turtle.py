@@ -2,7 +2,6 @@ from animal import Animal
 import pygame
 from random import randrange
 import os
-from organism import Organism
 
 
 class Turtle(Animal):

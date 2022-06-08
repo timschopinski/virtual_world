@@ -24,4 +24,4 @@ class WildBerries(Plant):
             self.remove_organism(enemy)
 
     def __str__(self):
-        return 'Wild Berries'
+        return 'Wild_Berries'

@@ -10,7 +10,7 @@ class ChoiceList(LabelGUI):
 
     LIST_SIZE = 300
     list_of_organisms = [
-        OrganismType.GRASS, OrganismType.WOLF, OrganismType.TURTLE,
+        OrganismType.GRASS, OrganismType.WOLF, OrganismType.TURTLE, OrganismType.ANTELOPE,
         OrganismType.SHEEP, OrganismType.CYBER_SHEEP, OrganismType.WILD_BERRIES,
         OrganismType.BORSCH, OrganismType.DANDELION, OrganismType.GUARANI, OrganismType.FOX
     ]

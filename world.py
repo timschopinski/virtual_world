@@ -4,7 +4,7 @@ from animals.human import Human
 from animals.wolf import Wolf
 from animals.sheep import Sheep
 from animals.cyber_sheep import CyberSheep
-from animals.fox import Fox
+from animals.antelope import Antelope
 from animals.turtle import Turtle
 from animals.fox import Fox
 from plants.grass import Grass
@@ -20,12 +20,11 @@ from utils.type import OrganismType
 
 
 class World:
-    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch, CyberSheep, WildBerries, Fox]  # Species available in the world
+    SPECIES = [Grass, Guarani, Sheep, Wolf, Borsch, CyberSheep, WildBerries, Fox, Antelope, Turtle, Dandelion]  # Species available in the world
     CONCENTRATION = 100  # Organisms concentration
 
     def __init__(self, *args, **kwargs):
         super().__init__()
-
         self.organisms = []
         self.round = 0
         self.rows = BoardGUI.BOARD_ROWS
@@ -55,9 +54,7 @@ class World:
 
     def initialize(self):
         self._remove_all_organisms()
-        human = Human(
-            Point(randint(0, self.rows - 1),
-                  randint(0, self.columns - 1)), self)
+        human = Human(Point(randint(0, self.rows - 1), randint(0, self.columns - 1)), self)
         for x in range(self.rows):
             for y in range(self.columns):
                 if human.position.x == x and human.position.y == y:
@@ -113,6 +110,8 @@ class World:
                 new_organism = CyberSheep(position, self)
             elif organism_type == OrganismType.FOX:
                 new_organism = Fox(position, self)
+            elif organism_type == OrganismType.ANTELOPE:
+                new_organism = Antelope(position, self)
             elif organism_type == OrganismType.TURTLE:
                 new_organism = Turtle(position, self)
             elif organism_type == OrganismType.GRASS:

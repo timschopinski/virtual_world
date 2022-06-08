@@ -8,7 +8,6 @@ class Borsch(Plant):
 
     def __init__(self, position, world):
         super().__init__(position, world)
-        self.boost = 3
         self.has_special_collision = True
         self.chance_to_spread = 5  # %
         self.AVATAR_WIDTH = self.world.field_width * 0.7

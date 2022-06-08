@@ -44,12 +44,15 @@ class Load:
             world = WorldGUI()
             world.load_world(rows, columns, round_number)
             while organism_data := f.readline().split(' '):
+                print(organism_data)
                 if len(organism_data) == 1:  # last empty line
                     break
                 organism_data.remove('\n')
                 organism_type, x, y, age, strength, initiative = tuple(organism_data)
                 loaded_organism = world.create_new_organism(OrganismType.get_organism_type(organism_type),
                                                             Point(int(x), int(y)))
+                if loaded_organism is None:
+                    continue
                 loaded_organism.strength = int(strength)
                 loaded_organism.age = int(age)
                 loaded_organism.initiative = int(initiative)

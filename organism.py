@@ -26,6 +26,8 @@ class Organism:
 
     def eat_enemy(self, enemy: 'Organism'):
         """ Removes the enemy """
+        if not enemy.is_alive:
+            return
         self.world.organisms.remove(enemy)
         enemy.is_alive = False
         self.world.board[self.position.x][self.position.y] = self
@@ -35,6 +37,8 @@ class Organism:
 
     def die(self, enemy: 'Organism'):
         """ Removes self """
+        if not self.is_alive:
+            return
         self.is_alive = False
         self.world.organisms.remove(self)
         self.world.board[self.position.x][self.position.y] = enemy

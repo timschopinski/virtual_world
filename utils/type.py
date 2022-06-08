@@ -9,6 +9,7 @@ class OrganismType(Enum):
     CYBER_SHEEP = auto()
     TURTLE = auto()
     FOX = auto()
+    ANTELOPE = auto()
     GRASS = auto()
     GUARANI = auto()
     BORSCH = auto()
@@ -17,7 +18,9 @@ class OrganismType(Enum):
 
     @classmethod
     def get_organism_type(cls, organism_type: str) -> 'OrganismType':
+        """REturns OrganismType from a string"""
         organism_type = organism_type.upper()
+        print(f'{organism_type} -> get_organism_type()')
         if organism_type == 'HUMAN':
             return cls.HUMAN
         elif organism_type == 'WOLF':
@@ -30,6 +33,9 @@ class OrganismType(Enum):
             return cls.TURTLE
         elif organism_type == 'FOX':
             return cls.FOX
+        elif organism_type == 'ANTELOPE':
+            print(f'returning {organism_type} -> get_organism_type()')
+            return cls.ANTELOPE
         elif organism_type == 'GRASS':
             return cls.GRASS
         elif organism_type == 'GUARANI':

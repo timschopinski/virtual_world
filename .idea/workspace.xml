@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="general collision bugs fixed">
-      <change afterPath="$PROJECT_DIR$/animals/fox.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/assets/plants/borsch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/assets/plants/wild_berries.png" afterDir="false" />
+    <list default="true" id="2cb6a1f8-7bba-4493-ac0f-85bd97439109" name="Changes" comment="added fox">
+      <change afterPath="$PROJECT_DIR$/animals/antelope.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/assets/animals/antelope.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/assets/animals/fox.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animal.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals/cyber_sheep.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/cyber_sheep.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals/fox.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/fox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals/turtle.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals/turtle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui_labels/choice_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organism.py" beforeDir="false" afterPath="$PROJECT_DIR$/organism.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plants/borsch.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/borsch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plants/wild_berries.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/wild_berries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/storage/load.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/type.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/type.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/world.py" beforeDir="false" afterPath="$PROJECT_DIR$/world.py" afterDir="false" />
     </list>
@@ -72,11 +76,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/animals" />
       <recent name="$PROJECT_DIR$/gui/assets/animals" />
       <recent name="$PROJECT_DIR$/gui/assets/plants" />
       <recent name="$PROJECT_DIR$/gui/assets/animations/explosions" />
       <recent name="$PROJECT_DIR$/gui" />
-      <recent name="$PROJECT_DIR$/storage" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
@@ -259,7 +263,12 @@
       <workItem from="1654238287033" duration="2294000" />
       <workItem from="1654261318588" duration="1303000" />
       <workItem from="1654263304321" duration="4866000" />
-      <workItem from="1654441566771" duration="2508000" />
+      <workItem from="1654441566771" duration="9538000" />
+      <workItem from="1654512210310" duration="1943000" />
+      <workItem from="1654515483338" duration="1533000" />
+      <workItem from="1654539259500" duration="1581000" />
+      <workItem from="1654551314358" duration="2334000" />
+      <workItem from="1654618037546" duration="446000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1653842480867</created>
@@ -387,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654278652638</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added fox">
+      <created>1654444450924</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1654444450924</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,12 +438,13 @@
     <MESSAGE value="cyber sheep added" />
     <MESSAGE value="cyber sheep bug fixed" />
     <MESSAGE value="general collision bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="general collision bugs fixed" />
+    <MESSAGE value="added fox" />
+    <option name="LAST_COMMIT_MESSAGE" value="added fox" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/projekt_po$point.coverage" NAME="point Coverage Results" MODIFIED="1653404765860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$main.coverage" NAME="main Coverage Results" MODIFIED="1653504383549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1654444370294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/virtual_world$main.coverage" NAME="main Coverage Results" MODIFIED="1654618454436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/projekt_po$world.coverage" NAME="world Coverage Results" MODIFIED="1651678095595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/virtual_world$type.coverage" NAME="type Coverage Results" MODIFIED="1653902937628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/projekt_po$choice_list.coverage" NAME="choice_list Coverage Results" MODIFIED="1653386293615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />

@@ -1,8 +1,6 @@
 from animal import Animal
 import pygame
-from random import randrange
 import os
-from organism import Organism
 
 
 class Fox(Animal):
@@ -21,9 +19,7 @@ class Fox(Animal):
         self.world.clear_position(self.position.x, self.position.y)
         self.set_direction_to_position(self.get_empty_field(self.position))
         if self.direction is None:
-            for neighbour in self.get_all_neighbours():
-                if neighbour.strength < self.strength:
-                    self.set_direction_to_position(neighbour.position)
+            [self.set_direction_to_position(neighbour.position) for neighbour in self.get_all_neighbours() if neighbour.strength < self.strength]
         self.move()
 
     def __str__(self):

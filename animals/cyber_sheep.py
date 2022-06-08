@@ -11,7 +11,7 @@ class CyberSheep(Sheep):
     def __init__(self, position, world):
         super().__init__(position, world)
         self.strength = 4
-        self.initiative = 4
+        self.initiative = 11
         self.AVATAR_WIDTH = self.world.field_width * 0.8
         self.AVATAR_HEIGHT = self.world.field_height * 0.4
         self.AVATAR = pygame.transform.scale(pygame.image.load(os.path.join("gui/assets/animals/", "cyber_sheep.png")),
@@ -28,17 +28,14 @@ class CyberSheep(Sheep):
     def action(self):
         self.age += 1
         if not self.get_all_borsch():
-            print('super called')
             self.direction = Direction.get_random_direction()
         else:
-            print('extra behavior called')
             self.extra_action_behavior()
 
         self.world.clear_position(self.position.x, self.position.y)
         self.move()
 
     def extra_action_behavior(self):
-
         nearest_borsch = self.get_nearest_borsch()
         if self.position.x > nearest_borsch.position.x:
             self.direction = Direction.UP
