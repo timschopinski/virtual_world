@@ -1,13 +1,8 @@
 
 
 class Point:
-    def __init__(self, *args, **kwargs):
-        if len(args) == 2:
-            self.x, self.y = args
-        elif len(args) == 1 and len(args[0]) == 2:
-            self.x, self.y = args[0]
-        else:
-            raise Exception('To many arguments to unpack')
+    def __init__(self, coordinates: tuple):
+        self.x, self.y = coordinates
 
     def get_tuple(self) -> tuple:
         """ Returns Point coordinates as a tuple"""

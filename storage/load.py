@@ -50,7 +50,7 @@ class Load:
                 organism_data.remove('\n')
                 organism_type, x, y, age, strength, initiative = tuple(organism_data)
                 loaded_organism = world.create_new_organism(OrganismType.get_organism_type(organism_type),
-                                                            Point(int(x), int(y)))
+                                                            Point((int(x), int(y))))
                 if loaded_organism is None:
                     continue
                 loaded_organism.strength = int(strength)

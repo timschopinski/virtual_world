@@ -28,7 +28,10 @@ class Borsch(Plant):
             self.remove_organism(enemy)
             self.world.info.add_comment(
                 f'{enemy}[{enemy.position.x}][{enemy.position.y}] dies after eating {self}[{self.position.x}][{self.position.y}]')
-        super().extra_collision_behavior(enemy)
+            self.remove_organism(self)
+        else:
+            # If the enemy is a CyberSheep, it dies
+            super().extra_collision_behavior(enemy)
 
     @staticmethod
     def get_description():

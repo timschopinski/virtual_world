@@ -24,7 +24,7 @@ class ChoiceList(LabelGUI):
         self.draw_exit_button((self.top_left.x + self.width - 50, self.top_left.y + self.height - 50))
 
     def draw_organisms_list(self):
-        text_position = Point(self.top_left.x, self.top_left.y + 50)
+        text_position = Point((self.top_left.x, self.top_left.y + 50))
         gap = self.LIST_SIZE / len(self.list_of_organisms)
         organism_names = [organism.name for organism in self.list_of_organisms]
         super().draw_list(text_position, organism_names, gap)

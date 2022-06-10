@@ -37,7 +37,7 @@ class Skill:
         """ Kills all neighbours """
         x = self.owner.position.x
         y = self.owner.position.y
-        enemy_position = Point(x - 1, y)
+        enemy_position = Point((x - 1, y))
         if x > 0:
             if not self.owner.world.is_field_empty(enemy_position):
                 self.owner.world.remove_organism_on_field(enemy_position)
@@ -73,7 +73,7 @@ class Skill:
     def create_animation(self, position: Point):
         y = position.y * self.owner.world.field_width
         x = position.x * self.owner.world.field_height
-        self.explosions.append(Animation(self.animations.copy(), Point(y - 34 * self.owner.world.columns, x)))
+        self.explosions.append(Animation(self.animations.copy(), Point((y - 34 * self.owner.world.columns, x))))
         self.is_animating = True
 
     def draw_explosion(self):

@@ -34,7 +34,7 @@ class InfoLabel(LabelGUI):
     def draw_info_list(self):
         """ This method draws list with information about the organism"""
         info_list = [f'{key}:    {self.organism_info[key]}' for key in self.organism_info.keys()]
-        text_position = Point(self.top_left.x, self.top_left.y + 50)
+        text_position = Point((self.top_left.x, self.top_left.y + 50))
         gap = self.DESCRIPTION_HEIGHT / (len(self.organism_info) + 2)
         super().draw_list(text_position, info_list, gap)
         self.draw_description(text_position)

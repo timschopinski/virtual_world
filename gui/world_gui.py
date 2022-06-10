@@ -47,7 +47,7 @@ class WorldGUI(World, BoardGUI):
         top_left = Point(mouse_position)
         x = int(top_left.y / self.field_height)
         y = int(top_left.x / self.field_width)
-        if self.get_organism_on_field(Point(x, y)):
+        if self.get_organism_on_field((Point((x, y)))):
             self.info_label = InfoLabel(self.window, self, top_left, (x, y))
         else:
             self.choice_list = ChoiceList(self.window, self, top_left, (x, y))

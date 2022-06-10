@@ -54,14 +54,14 @@ class World:
 
     def initialize(self):
         self._remove_all_organisms()
-        human = Human(Point(randint(0, self.rows - 1), randint(0, self.columns - 1)), self)
+        human = Human(Point((randint(0, self.rows - 1), randint(0, self.columns - 1))), self)
         for x in range(self.rows):
             for y in range(self.columns):
                 if human.position.x == x and human.position.y == y:
                     pass
                 else:
                     if randint(0, 99) < self.CONCENTRATION:
-                        self.create_random_organism(Point(x, y))
+                        self.create_random_organism(Point((x, y)))
 
     def another_round(self):
         self._sort_organisms()

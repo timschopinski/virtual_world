@@ -17,6 +17,7 @@ class Organism:
         self.is_alive = True
         self.is_human = False
         self.strength = None
+        self.chance_to_reproduce = None
         self.initiative = None
         self.AVATAR: Surface = NotImplemented
         self.AVATAR_WIDTH = None
@@ -36,7 +37,7 @@ class Organism:
         del enemy
 
     def die(self, enemy: 'Organism'):
-        """ Removes self """
+        """ Removes self from the board end organism list """
         if not self.is_alive:
             return
         self.is_alive = False
@@ -63,16 +64,16 @@ class Organism:
         possible_positions: List[Point] = []
         if position.x > 0:
             if self.world.board[position.x-1][position.y] is None:
-                possible_positions.append(Point(position.x-1, position.y))
+                possible_positions.append(Point((position.x-1, position.y)))
         if position.x < self.world.rows - 1:
             if self.world.board[position.x+1][position.y] is None:
-                possible_positions.append(Point(position.x+1, position.y))
+                possible_positions.append(Point((position.x+1, position.y)))
         if position.y > 0:
             if self.world.board[position.x][position.y-1] is None:
-                possible_positions.append(Point(position.x, position.y - 1))
+                possible_positions.append(Point((position.x, position.y - 1)))
         if position.y < self.world.columns - 1:
             if self.world.board[position.x][position.y+1] is None:
-                possible_positions.append(Point(position.x, position.y + 1))
+                possible_positions.append(Point((position.x, position.y + 1)))
         if possible_positions:
             return random.choice(possible_positions)
         return None

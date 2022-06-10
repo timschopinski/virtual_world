@@ -19,7 +19,7 @@ class Fox(Animal):
         self.world.clear_position(self.position.x, self.position.y)
         self.set_direction_to_position(self.get_empty_field(self.position))
         if self.direction is None:
-            [self.set_direction_to_position(neighbour.position) for neighbour in self.get_all_neighbours() if neighbour.strength < self.strength]
+            [self.set_direction_to_position(neighbour.position) for neighbour in self.get_all_neighbours() if neighbour.strength < self.strength or type(neighbour) is type(self)]
         self.move()
 
     def __str__(self):

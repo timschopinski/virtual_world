@@ -27,6 +27,7 @@ class CyberSheep(Sheep):
 
     def action(self):
         self.age += 1
+        print(self.get_all_borsch())
         if not self.get_all_borsch():
             self.direction = Direction.get_random_direction()
         else:
